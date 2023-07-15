@@ -13,13 +13,13 @@
         "outputPath": "dist/apps/nx-mfe-react-remote",
         "index": "apps/nx-mfe-react-remote/src/index.html",
         "baseHref": "/",
-        "main": "apps/nx-mfe-react-remote/src/main.tsx",
+        "main": "apps/nx-mfe-react-remote/src/main.ts",
         "tsConfig": "apps/nx-mfe-react-remote/tsconfig.app.json",
         "assets": [
           "apps/nx-mfe-react-remote/src/favicon.ico",
           "apps/nx-mfe-react-remote/src/assets"
         ],
-        "styles": ["apps/nx-mfe-react-remote/src/styles.css"],
+        "styles": ["apps/nx-mfe-react-remote/src/styles.scss"],
         "scripts": [],
         "isolatedConfig": true,
         "webpackConfig": "apps/nx-mfe-react-remote/webpack.config.js"
@@ -43,16 +43,18 @@
           "sourceMap": false,
           "namedChunks": false,
           "extractLicenses": true,
-          "vendorChunk": false
+          "vendorChunk": false,
+          "webpackConfig": "apps/nx-mfe-react-remote/webpack.config.prod.js"
         }
       }
     },
     "serve": {
-      "executor": "@nx/webpack:dev-server",
+      "executor": "@nx/react:module-federation-dev-server",
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "nx-mfe-react-remote:build",
-        "hmr": true
+        "hmr": true,
+        "port": 4201
       },
       "configurations": {
         "development": {
@@ -73,8 +75,18 @@
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
+      "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "nx-mfe-react-remote:build"
+        "buildTarget": "nx-mfe-react-remote:build",
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "nx-mfe-react-remote:build:development"
+        },
+        "production": {
+          "buildTarget": "nx-mfe-react-remote:build:production"
+        }
       }
     },
     "test": {
