@@ -4,10 +4,11 @@
   "license": "MIT",
   "scripts": {
     "start": "nx run nx-mfe-angular-host:serve",
-    "start:react": "nx run nx-mfe-react-remote:serve"
+    "start:react": "nx run nx-mfe-react-host:serve"
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation-tools": "^16.0.4",
     "@angular/animations": "~16.1.0",
     "@angular/common": "~16.1.0",
     "@angular/compiler": "~16.1.0",
@@ -20,6 +21,7 @@
     "@swc/helpers": "~0.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-router-dom": "6.11.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

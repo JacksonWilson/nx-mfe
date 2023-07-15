@@ -20,6 +20,6 @@ describe('App', () => {
         <App />
       </BrowserRouter>
     );
-    expect(getByText(/Welcome nx-mfe-react-remote/gi)).toBeTruthy();
+    expect(getByText(/Welcome nx-mfe-react-host/gi)).toBeTruthy();
   });
 });
